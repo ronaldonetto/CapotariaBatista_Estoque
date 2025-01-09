@@ -1,0 +1,20 @@
+# Ignorar a pasta lib/
+lib/
+
+# Ignorar arquivos do NetBeans
+nbproject/
+
+# Ignorar arquivos de build
+build/
+target/
+build.xml
+manifest.mf
+
+#Ignorar arquivos temporários do sistema
+*.log
+*.class
+*.tmp
+
+# Ignorar configurações de IDE
+.idea/
+.vscode/
