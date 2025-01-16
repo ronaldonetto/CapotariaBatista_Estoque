@@ -18,3 +18,4 @@ manifest.mf
 # Ignorar configurações de IDE
 .idea/
 .vscode/
+/dist/
