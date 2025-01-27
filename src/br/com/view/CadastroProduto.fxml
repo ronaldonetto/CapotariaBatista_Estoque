@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.controller.CadastroProdutoController">
+   <children>
+      <Label layoutX="326.0" text="Cadastro de Produtos">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Pane layoutX="11.0" layoutY="42.0" prefHeight="593.0" prefWidth="874.0" style="-fx-border-color: #D3D3D3; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: white; -fx-background-radius: 5;">
+         <children>
+            <Label fx:id="labelOs" layoutX="20.0" layoutY="49.0" text="Os: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelProduto" layoutX="229.0" layoutY="49.0" text="Produto:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelQuantidade" layoutX="236.0" layoutY="110.0" text="Quantidade:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelMetragem" layoutX="17.0" layoutY="109.0" text="Metragem:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelCategoria" layoutX="632.0" layoutY="49.0" text="Categoria:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelDescricao" layoutX="450.0" layoutY="111.0" text="Descrição:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textOs" layoutX="54.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textProduto" layoutX="291.0" layoutY="47.0" prefHeight="25.0" prefWidth="319.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textQuantidade" layoutX="327.0" layoutY="108.0" prefHeight="25.0" prefWidth="116.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textDescricao" layoutX="523.0" layoutY="108.0" prefHeight="25.0" prefWidth="263.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textMetragem" layoutX="98.0" layoutY="107.0" prefHeight="25.0" prefWidth="131.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <DatePicker fx:id="datePickerCadastro" layoutX="142.0" layoutY="165.0" />
+            <Label fx:id="LabelDataCadastro" layoutX="17.0" layoutY="167.0" text="Data de cadastro:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnNovo" layoutX="13.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Novo" onAction="#onNovoClick" >
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSalvar" layoutX="102.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Salvar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditar" layoutX="196.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Editar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnExcluir" layoutX="287.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Excluir">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCancelar" layoutX="376.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Cancelar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelFornecedor" layoutX="337.0" layoutY="168.0" text="Fornecedor:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFornecedor" layoutX="424.0" layoutY="165.0" prefHeight="25.0" prefWidth="186.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textPesquisar" layoutX="468.0" layoutY="243.0" prefHeight="25.0" prefWidth="232.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnPesquisar" layoutX="707.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Pesquisar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSair" layoutX="802.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Sair">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ScrollPane layoutX="10.0" layoutY="278.0" prefHeight="304.0" prefWidth="850.0">
+               <content>
+                  <ListView prefHeight="302.0" prefWidth="849.0" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="labelUnidadeMedida" layoutX="621.0" layoutY="167.0" text="Unidade Medida:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choiceBoxerCategoria" layoutX="707.0" layoutY="47.0" prefHeight="25.0" prefWidth="140.0" />
+            <ChoiceBox fx:id="choiceBoxerUnidadeMedida" layoutX="740.0" layoutY="165.0" prefHeight="25.0" prefWidth="116.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
