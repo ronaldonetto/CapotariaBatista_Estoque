@@ -75,18 +75,18 @@
                   <Font size="13.0" />
                </font>
             </TextField>
-            <DatePicker fx:id="datePickerCadastro" layoutX="142.0" layoutY="165.0" />
-            <Label fx:id="LabelDataCadastro" layoutX="17.0" layoutY="167.0" text="Data de cadastro:">
+            <DatePicker fx:id="datePickerCadastro" layoutX="204.0" layoutY="165.0" />
+            <Label fx:id="LabelDataCadastro" layoutX="79.0" layoutY="168.0" text="Data de cadastro:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btnNovo" layoutX="13.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Novo" onAction="#onNovoClick" >
+            <Button fx:id="btnNovo" layoutX="13.0" layoutY="243.0" mnemonicParsing="false" onAction="#onNovoClick" prefHeight="25.0" prefWidth="81.0" text="Novo">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnSalvar" layoutX="102.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Salvar">
+            <Button fx:id="btnSalvar" layoutX="102.0" layoutY="243.0" mnemonicParsing="false" onAction="#onSalvarClick" prefHeight="25.0" prefWidth="81.0" text="Salvar">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -106,12 +106,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="labelFornecedor" layoutX="337.0" layoutY="168.0" text="Fornecedor:">
+            <Label fx:id="labelFornecedor" layoutX="429.0" layoutY="167.0" text="Fornecedor:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="textFornecedor" layoutX="424.0" layoutY="165.0" prefHeight="25.0" prefWidth="186.0">
+            <TextField fx:id="textFornecedor" layoutX="513.0" layoutY="164.0" prefHeight="25.0" prefWidth="186.0">
                <font>
                   <Font size="13.0" />
                </font>
@@ -136,13 +136,7 @@
                   <ListView prefHeight="302.0" prefWidth="849.0" />
                </content>
             </ScrollPane>
-            <Label fx:id="labelUnidadeMedida" layoutX="621.0" layoutY="167.0" text="Unidade Medida:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
             <ChoiceBox fx:id="choiceBoxerCategoria" layoutX="707.0" layoutY="47.0" prefHeight="25.0" prefWidth="140.0" />
-            <ChoiceBox fx:id="choiceBoxerUnidadeMedida" layoutX="740.0" layoutY="165.0" prefHeight="25.0" prefWidth="116.0" />
          </children>
       </Pane>
    </children>
