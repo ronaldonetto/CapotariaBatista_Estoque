@@ -44,6 +44,19 @@ public class CadastroProdutoController {
        choiceBoxerCategoria.getItems().addAll("Náutico", "Automotivo", "Residencial", "Industrial");    
    }
    
+   //Método para limpar os campos na tela de cadastro
+   private void limparCampos() {
+        textOs.clear();
+        textProduto.clear();
+        textQuantidade.clear();
+        textDescricao.clear();
+        textMetragem.clear();
+        textFornecedor.clear();
+        choiceBoxerCategoria.setValue(null);
+        datePickerCadastro.setValue(null);
+        
+    }
+   
 
     
 }
