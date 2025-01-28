@@ -31,6 +31,19 @@ public class CadastroProdutoController {
     
     private ProdutoDAO produtoDAO = new ProdutoDAO();  
     
+   //Método para inicializado automaticamente ao carregar a FXML
+   @FXML
+   public void initialize(){
+       //Configurações iniciais, como carregar categorias e unidades de medida
+       carregarCategorias();
+       
+   }
    
+   public void carregarCategorias(){
+       //Adiciona categorias disponiveis
+       choiceBoxerCategoria.getItems().addAll("Náutico", "Automotivo", "Residencial", "Industrial");    
+   }
+   
+
     
 }
