@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public class Produto {
     
-    private String os;
+    private int os;
     private String produto;
     private int quantidade;
     private double metragem;
@@ -15,7 +15,7 @@ public class Produto {
     private String descricao;
     private LocalDate dataCadastro;
     private String fornecedor;
-    private String unidadeMedida;
+    
     
     
     public Produto(){
@@ -36,8 +36,8 @@ public class Produto {
      *@param unidadeMedida Unidade de medida do produto.
      *
     */
-    public Produto(String os, String produto, int quantidade, double metragem, String categoria, String descricao,
-            LocalDate dataCadastro, String fornecedor, String unidadeMedida) {
+    public Produto(int os, String produto, int quantidade, double metragem, String categoria, String descricao,
+            LocalDate dataCadastro, String fornecedor) {
        
        this.os = os;
        this.produto = produto;
@@ -47,17 +47,16 @@ public class Produto {
        this.descricao = descricao;
        this.dataCadastro = dataCadastro;
        this.fornecedor = fornecedor;
-       this.unidadeMedida = unidadeMedida;
        
     }
     
     //Getters e Setters
     
-    public String getOs() {
+    public int getOs() {
         return os;
     }
     
-    public void setOs(String os) {
+    public void setOs(int os) {
         this.os = os;
     }
     
@@ -120,13 +119,6 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
     
-    public String getUnidadeMedida(){
-        return unidadeMedida;
-    }
-    
-    public void setUnidadeMedida(String unidadeMedida){
-        this.unidadeMedida = unidadeMedida;
-    }
     
     /**
      * 
@@ -146,7 +138,6 @@ public class Produto {
                 ", descricao='" + descricao + '\'' +
                 ", dataCadastro=" + dataCadastro +
                 ", fornecedor='" + fornecedor + '\'' +
-                ", unidadeMedida='" + unidadeMedida + '\'' +
                 '}'; 
     }
 }
