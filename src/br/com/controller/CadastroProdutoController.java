@@ -44,6 +44,14 @@ public class CadastroProdutoController {
        choiceBoxerCategoria.getItems().addAll("Náutico", "Automotivo", "Residencial", "Industrial");    
    }
    
+   //Método para o botão "Novo". reutilizando o método de limpar os campos na tela de cadastro.
+   @FXML
+   private void onNovoClick(){
+       limparCampos();
+       System.out.println("Campos limpos!");
+   }
+
+   
    //Método para limpar os campos na tela de cadastro
    private void limparCampos() {
         textOs.clear();
