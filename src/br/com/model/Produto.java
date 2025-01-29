@@ -1,6 +1,8 @@
 package br.com.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  *
  * @author ronaldo neto
@@ -14,6 +16,7 @@ public class Produto {
     private String categoria;
     private String descricao;
     private LocalDate dataCadastro;
+    private LocalDateTime horaCadastro;
     private String fornecedor;
     
     
@@ -33,11 +36,10 @@ public class Produto {
      *@param descricao Descrição do produto.
      *@param dataCadastro Data de cadastro do produto.
      *@param fornecedor Fornecedor do produto.
-     *@param unidadeMedida Unidade de medida do produto.
      *
     */
     public Produto(int os, String produto, int quantidade, double metragem, String categoria, String descricao,
-            LocalDate dataCadastro, String fornecedor) {
+            LocalDate dataCadastro,LocalDateTime horaCadastro, String fornecedor) {
        
        this.os = os;
        this.produto = produto;
@@ -46,6 +48,7 @@ public class Produto {
        this.categoria = categoria;
        this.descricao = descricao;
        this.dataCadastro = dataCadastro;
+       this.horaCadastro = horaCadastro;
        this.fornecedor = fornecedor;
        
     }
@@ -111,6 +114,14 @@ public class Produto {
         this.dataCadastro = dataCadastro;
     }
     
+    public LocalDateTime getHoraCadastro(){
+        return horaCadastro;
+    }
+    
+    public void setHoraCadastro(LocalDateTime horaCadastro){
+        this.horaCadastro = horaCadastro;
+    }
+    
     public String getFornecedor(){
         return fornecedor;
     }
@@ -137,6 +148,7 @@ public class Produto {
                 ", categoria='" + categoria + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", dataCadastro=" + dataCadastro +
+                ", horaCadastro=" + horaCadastro + 
                 ", fornecedor='" + fornecedor + '\'' +
                 '}'; 
     }
