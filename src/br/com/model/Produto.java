@@ -35,6 +35,7 @@ public class Produto {
      *@param categoria Categoria do produto.
      *@param descricao Descrição do produto.
      *@param dataCadastro Data de cadastro do produto.
+     *@param horaCadastro Hora do cadastro do produto.
      *@param fornecedor Fornecedor do produto.
      *
     */
