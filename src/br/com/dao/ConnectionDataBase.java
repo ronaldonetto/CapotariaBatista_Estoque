@@ -2,6 +2,7 @@ package br.com.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
@@ -61,15 +62,9 @@ public class ConnectionDataBase {
         
         }
     
+    } 
      /**
      * Método principal para testar a classe.
      *
      * @param args argumentos da linha de comando.
      */
-    public static void main(String[] args) {
-        testarConexao();
-    }
- }
-    
-  
-

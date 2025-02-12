@@ -1,5 +1,6 @@
 package br.com.dao;
 
+import br.com.controller.CadastroProdutoController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,9 @@ import java.util.List;
 
 import br.com.model.Produto;
 import br.com.dao.ConnectionDataBase;
-import java.sql.Date;
+
+import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 
 /**
@@ -19,6 +22,8 @@ import java.sql.Date;
  */
 
 public class ProdutoDAO {
+    
+    
     
     //Método para salvar os produtos no banco de dados. Utilizado queries 
     public void salvar(Produto produto) throws SQLException {
@@ -33,11 +38,41 @@ public class ProdutoDAO {
             stmt.setInt(5, produto.getQuantidade());
             stmt.setString(6, produto.getDescricao());
             stmt.setString(7, produto.getFornecedor());
-            stmt.setDate(8, Date.valueOf(produto.getDataCadastro()));
+            
+            // Obtém a data e hora atual
+            LocalDateTime dataCadastroComHoraAtual = LocalDateTime.now();
+
+            // Converte LocalDateTime para Timestamp
+            Timestamp timestamp = Timestamp.valueOf(dataCadastroComHoraAtual);
+            stmt.setTimestamp(8, timestamp);
             
             stmt.executeUpdate();
         }
- 
+      
     }
-}    
+    
+    public List<Produto> buscarTodos() throws SQLException {
+    List<Produto> produtos = new ArrayList<>();
+    String sql = "SELECT * FROM Produtos";  // Exemplo de consulta SQL
+    try (Connection conn = ConnectionDataBase.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setOs(rs.getInt("os_produto"));
+            produto.setProduto(rs.getString("nome_produto"));
+            produto.setQuantidade(rs.getInt("quantidade_metro"));
+            produto.setMetragem(rs.getDouble("quantidade"));
+            produto.setDescricao(rs.getString("descricao"));
+            produto.setFornecedor(rs.getString("fornecedor"));
+            produto.setCategoria(rs.getString("categoria"));
+            produto.setDataCadastro(rs.getTimestamp("data_cadastro").toLocalDateTime());
+            produtos.add(produto);
+        }
+    }
+    return produtos;
+}
+    
+ }   
 

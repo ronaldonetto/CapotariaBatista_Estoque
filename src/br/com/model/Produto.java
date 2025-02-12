@@ -1,6 +1,5 @@
 package br.com.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -15,8 +14,7 @@ public class Produto {
     private double metragem;
     private String categoria;
     private String descricao;
-    private LocalDate dataCadastro;
-    private LocalDateTime horaCadastro;
+    private LocalDateTime dataCadastro;
     private String fornecedor;
     
     
@@ -40,7 +38,7 @@ public class Produto {
      *
     */
     public Produto(int os, String produto, int quantidade, double metragem, String categoria, String descricao,
-            LocalDate dataCadastro,LocalDateTime horaCadastro, String fornecedor) {
+            LocalDateTime dataCadastro, String fornecedor) {
        
        this.os = os;
        this.produto = produto;
@@ -49,7 +47,6 @@ public class Produto {
        this.categoria = categoria;
        this.descricao = descricao;
        this.dataCadastro = dataCadastro;
-       this.horaCadastro = horaCadastro;
        this.fornecedor = fornecedor;
        
     }
@@ -107,20 +104,12 @@ public class Produto {
         this.descricao = descricao;
     }
     
-    public LocalDate getDataCadastro(){
+    public LocalDateTime getDataCadastro(){
         return dataCadastro;
     }
     
-    public void setDataCadastro(LocalDate dataCadastro){
+    public void setDataCadastro(LocalDateTime dataCadastro){
         this.dataCadastro = dataCadastro;
-    }
-    
-    public LocalDateTime getHoraCadastro(){
-        return horaCadastro;
-    }
-    
-    public void setHoraCadastro(LocalDateTime horaCadastro){
-        this.horaCadastro = horaCadastro;
     }
     
     public String getFornecedor(){
@@ -141,16 +130,7 @@ public class Produto {
      */
     @Override
     public String toString() {
-        return "Produto{" +
-                "os='" + os + '\'' +
-                ", produto='" + produto + '\'' +
-                ", quantidade=" + quantidade +
-                ", metragem=" + metragem +
-                ", categoria='" + categoria + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", dataCadastro=" + dataCadastro +
-                ", horaCadastro=" + horaCadastro + 
-                ", fornecedor='" + fornecedor + '\'' +
-                '}'; 
+        return String.format("OS: %d | Produto: %s | Categoria: %s | Quantidade: %d | Metragem: %.2f m²", 
+            os, produto, categoria, quantidade, metragem);
     }
 }

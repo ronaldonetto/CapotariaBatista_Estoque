@@ -6,7 +6,13 @@ import javafx.scene.control.*;
 import br.com.model.Produto;
 import br.com.dao.ProdutoDAO;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -26,19 +32,97 @@ public class CadastroProdutoController {
     @FXML 
     private ChoiceBox<String> choiceBoxerCategoria;
     
+    @FXML
+    private ListView<Produto> ListView;
+    
+    @FXML
+    private ObservableList<Produto> listaProdutos = FXCollections.observableArrayList();
+    
     @FXML 
     private Button btnNovo, btnSalvar, btnEditar, btnExcluir, btnCancelar, btnPesquisar, btnSair;
     
     private ProdutoDAO produtoDAO = new ProdutoDAO();  
     
-   //Método para inicializado automaticamente ao carregar a FXML
+    private Produto produto = new Produto();
+    
+   //Método para inicializar automaticamente ao carregar a FXML
    @FXML
    public void initialize(){
        //Configurações iniciais, como carregar categorias e unidades de medida
        carregarCategorias();
        
-   }
+       // Carregar produtos existentes do banco
+       try {
+         List<Produto> produtos = produtoDAO.buscarTodos();
+         listaProdutos.addAll(produtos);  // Adiciona todos os produtos ao ObservableList
+       } catch (SQLException e) {
+          e.printStackTrace();  // Trate os erros do banco adequadamente
+       }
+       
+       // Configura o ListView
+       ListView.setItems(listaProdutos);
+    
+       // Configurar o CellFactory para exibir as informações de forma mais estruturada
+       ListView.setCellFactory(param -> new ListCell<Produto>() {
+        @Override
+        protected void updateItem(Produto item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item != null) {
+                // Criar o HBox para organizar as informações visualmente
+                HBox hbox = new HBox();
+                hbox.setSpacing(10);
+                
+                // Criar os elementos de label para os títulos e valores
+                Label labelOs = new Label("Os:");
+                Label labelProduto = new Label("Produto:");
+                Label labelCategoria = new Label("Categoria:");
+                Label labelQuantidade = new Label("Quantidade:");
+                Label labelMetragem = new Label("Metragem:");
+                
+                // Criar as labels para os valores dos campos
+                Label valorOs = new Label(String.valueOf(item.getOs()));
+                Label valorProduto = new Label(item.getProduto());
+                Label valorCategoria = new Label(item.getCategoria());
+                Label valorQuantidade = new Label(String.valueOf(item.getQuantidade()));
+                Label valorMetragem = new Label(String.valueOf(item.getMetragem()) + " m²");
+
+                // Estilizar os títulos com negrito
+                labelOs.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
+                labelProduto.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;"); 
+                labelCategoria.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
+                labelQuantidade.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
+                labelMetragem.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
+                
+                // Estilizar os valores (sem negrito, texto normal)
+                valorOs.setStyle("-fx-font-size: 12px; -fx-text-fill: #1a1a1a;");
+                valorProduto.setStyle("-fx-font-size: 12px; -fx-text-fill: #1a1a1a;");
+                valorCategoria.setStyle("-fx-font-size: 12px; -fx-text-fill: #1a1a1a;");
+                valorQuantidade.setStyle("-fx-font-size: 12px; -fx-text-fill: #1a1a1a;");
+                valorMetragem.setStyle("-fx-font-size: 12px; -fx-text-fill: #1a1a1a;");
+                
+                // Adicionar as labels e valores no HBox
+                hbox.getChildren().addAll(labelOs, valorOs, labelProduto, valorProduto, labelCategoria, valorCategoria, labelQuantidade, valorQuantidade, labelMetragem, valorMetragem);
+                
+                // Exibir o HBox no ListCell
+                setGraphic(hbox);
+            } else {
+                setGraphic(null);  // Limpar o conteúdo da célula caso esteja vazia
+            }
+        }
+    });
+}
    
+   private void carregarProdutosDoBanco() {
+    try {
+        // Aqui você faria a consulta no banco para carregar os produtos
+        List<Produto> produtos = produtoDAO.buscarTodos();
+        listaProdutos.addAll(produtos);  // Adiciona todos os produtos à lista
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+   
+   //Método para carregar as categorias disponiveis.
    public void carregarCategorias(){
        //Adiciona categorias disponiveis
        choiceBoxerCategoria.getItems().addAll("Náutico", "Automotivo", "Residencial", "Industrial");    
@@ -57,8 +141,7 @@ public class CadastroProdutoController {
        salvarProduto();
       
    }
-   
-   
+     
    //Método para salvar os produtos.
    private void salvarProduto() throws SQLException{
        
@@ -131,7 +214,7 @@ public class CadastroProdutoController {
            return; //Encerra o método se o valor de 'quantidade' for inválido
        }
        
-       
+            
        //Continua com a criação do objeto produto
        Produto produto = new Produto();
        
@@ -142,11 +225,16 @@ public class CadastroProdutoController {
        produto.setDescricao(textDescricao.getText());
        produto.setFornecedor(textFornecedor.getText());
        produto.setCategoria(choiceBoxerCategoria.getValue());
-       produto.setDataCadastro(datePickerCadastro.getValue());
+       produto.setDataCadastro(LocalDateTime.now());
        
-       
+       //Salva o produto
        produtoDAO.salvar(produto);
        
+       //Adiciona o produto no observableList (isso vai atualizar o ListView automaticamente). 
+       listaProdutos.add(produto);
+       
+       ListView.setItems(listaProdutos);
+               
        Alert alert = new Alert(Alert.AlertType.INFORMATION);
        alert.setTitle("Sucesso");
        alert.setHeaderText("Produto cadastrado com sucesso");
@@ -168,7 +256,5 @@ public class CadastroProdutoController {
         datePickerCadastro.setValue(null);
         
     }
-   
-
-    
+     
 }
